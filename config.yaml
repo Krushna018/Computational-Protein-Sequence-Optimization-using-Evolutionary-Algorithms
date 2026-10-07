@@ -1,0 +1,59 @@
+global_seed: 42
+sequence_length: 50
+runs: 30
+generations: 50
+
+# Targets for fitness
+targets:
+  gravy_min: 0.5
+  gravy_max: 1.5
+  charge_min: 3.0
+  charge_max: 8.0
+  instability_max: 30.0
+  max_homopolymer: 4
+  max_cys_pro_frac: 0.1
+
+weights:
+  gravy: 10
+  charge: 10
+  stability: 15
+  diversity: 5
+  homopolymer_penalty: -20
+  cys_pro_penalty: -20
+  charge_penalty: -10
+  gravy_penalty: -10
+  instability_penalty: -10
+
+configurations:
+  - name: config_A_baseline
+    population_size: 100
+    mutation_rate: 0.05
+    crossover_rate: 0.8
+    crossover_type: single_point
+    selection_type: tournament
+    tournament_size: 3
+    elite_count: 2
+  - name: config_B_high_mut
+    population_size: 100
+    mutation_rate: 0.20
+    crossover_rate: 0.8
+    crossover_type: single_point
+    selection_type: tournament
+    tournament_size: 3
+    elite_count: 2
+  - name: config_C_uniform_cx
+    population_size: 100
+    mutation_rate: 0.05
+    crossover_rate: 0.8
+    crossover_type: uniform
+    selection_type: tournament
+    tournament_size: 3
+    elite_count: 2
+  - name: config_D_roulette
+    population_size: 100
+    mutation_rate: 0.05
+    crossover_rate: 0.8
+    crossover_type: single_point
+    selection_type: roulette
+    tournament_size: 3
+    elite_count: 2
